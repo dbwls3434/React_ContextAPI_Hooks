@@ -5,7 +5,9 @@ export const CatContext = createContext();
 
 const CatContextProvider = props => {
   const [cats, dispatch] = useReducer(CatReducer, [], () => {
-    return JSON.parse(localStorage.getItem('cats'));
+    return localStorage.getItem('cats')
+      ? JSON.parse(localStorage.getItem('cats'))
+      : [];
   });
 
   useEffect(() => {
